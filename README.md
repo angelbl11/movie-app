@@ -112,11 +112,3 @@ flutter test test/unit/
 # Pruebas de Widgets (UI)
 flutter test test/widget/
 ```
-
-```
-
-```
-
-```
-
-```
