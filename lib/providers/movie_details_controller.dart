@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:movie_app/repositories/movie_repository.dart' as repo;
 
 import 'package:movie_app/data/movie_detail.dart';
@@ -9,6 +10,6 @@ part 'movie_details_controller.g.dart';
 class MovieDetailsController extends _$MovieDetailsController {
   @override
   Future<MovieDetailModel> build(int movieId) async {
-    return await repo.getMovieDetails(movieId);
+    return await repo.getMovieDetails(Dio(), movieId);
   }
 }

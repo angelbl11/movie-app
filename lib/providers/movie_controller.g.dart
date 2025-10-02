@@ -33,7 +33,7 @@ final class MovieControllerProvider
   MovieController create() => MovieController();
 }
 
-String _$movieControllerHash() => r'a900fbf6c81f16a70ee7f4debe4d5c2a243d04b8';
+String _$movieControllerHash() => r'fe9512de5b26f16e13ff0a350c27731407870c82';
 
 abstract class _$MovieController extends $AsyncNotifier<MovieModel> {
   FutureOr<MovieModel> build();

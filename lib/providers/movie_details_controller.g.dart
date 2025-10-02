@@ -52,7 +52,7 @@ final class MovieDetailsControllerProvider
 }
 
 String _$movieDetailsControllerHash() =>
-    r'aff5ba580740c3398727e1a0bb3eefe46e630812';
+    r'c3fd04dab9cf381bc0676cc8671af65cd76d8cfe';
 
 final class MovieDetailsControllerFamily extends $Family
     with

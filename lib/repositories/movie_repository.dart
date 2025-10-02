@@ -5,9 +5,9 @@ import 'package:movie_app/data/movie_detail.dart';
 const apiUrl = String.fromEnvironment('API_URL');
 const apiKey = String.fromEnvironment('API_KEY');
 
-Future<MovieModel> getMovies() async {
+Future<MovieModel> getMovies(Dio dio) async {
   try {
-    final response = await Dio().get(
+    final response = await dio.get(
       '${apiUrl}movie/popular',
       queryParameters: {'region': 'MX'},
       options: Options(headers: {'Authorization': 'Bearer $apiKey'}),
@@ -24,9 +24,9 @@ Future<MovieModel> getMovies() async {
   }
 }
 
-Future<MovieModel> searchMovies(String query) async {
+Future<MovieModel> searchMovies(Dio dio, String query) async {
   try {
-    final response = await Dio().get(
+    final response = await dio.get(
       '${apiUrl}search/movie',
       queryParameters: {'query': query, 'region': 'MX'},
       options: Options(headers: {'Authorization': 'Bearer $apiKey'}),
@@ -43,9 +43,9 @@ Future<MovieModel> searchMovies(String query) async {
   }
 }
 
-Future<MovieDetailModel> getMovieDetails(int movieId) async {
+Future<MovieDetailModel> getMovieDetails(Dio dio, int movieId) async {
   try {
-    final response = await Dio().get(
+    final response = await dio.get(
       '${apiUrl}movie/$movieId',
       options: Options(headers: {'Authorization': 'Bearer $apiKey'}),
     );
