@@ -30,7 +30,7 @@ class Result {
   @JsonKey(name: "adult")
   bool adult;
   @JsonKey(name: "backdrop_path")
-  String backdropPath;
+  String? backdropPath;
   @JsonKey(name: "genre_ids")
   List<int> genreIds;
   @JsonKey(name: "id")
@@ -44,9 +44,9 @@ class Result {
   @JsonKey(name: "popularity")
   double popularity;
   @JsonKey(name: "poster_path")
-  String posterPath;
+  String? posterPath;
   @JsonKey(name: "release_date")
-  DateTime releaseDate;
+  String? releaseDate;
   @JsonKey(name: "title")
   String title;
   @JsonKey(name: "video")
@@ -58,15 +58,15 @@ class Result {
 
   Result({
     required this.adult,
-    required this.backdropPath,
+    this.backdropPath,
     required this.genreIds,
     required this.id,
     required this.originalLanguage,
     required this.originalTitle,
     required this.overview,
     required this.popularity,
-    required this.posterPath,
-    required this.releaseDate,
+    this.posterPath,
+    this.releaseDate,
     required this.title,
     required this.video,
     required this.voteAverage,
