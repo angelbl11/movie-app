@@ -101,4 +101,4 @@ final class ThemeProvider
   }
 }
 
-String _$themeHash() => r'a069085a04c9cd079d664adcddde2a5b0fbcc6ad';
+String _$themeHash() => r'78b640da19f723ac4e3556cb6640f18039933949';
