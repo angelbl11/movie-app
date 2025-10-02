@@ -1,65 +1,66 @@
 # 🎬 Movie App
 
-Una aplicación móvil construida con Flutter para descubrir, buscar y guardar tus películas favoritas. La app consume datos de una API de películas para mostrar información relevante y actualizada.
+A mobile application built with Flutter to discover, search, and save your favorite movies. The app consumes data from a movie API to display relevant and up-to-date information.
 
 ---
 
 ## ✨ Features
 
-- **Descubre:** Visualiza una lista de las películas más populares del momento.
-- **Busca:** Encuentra películas por su título.
-- **Detalles:** Obtén información detallada de cada película, incluyendo sinopsis, calificación y fecha de estreno.
-- **Favoritos:** Guarda y gestiona una lista local de tus películas preferidas.
+- **Discover:** View a list of the most popular movies currently trending.
+- **Search:** Find movies by their title.
+- **Details:** Get detailed information for each movie, including a synopsis, rating, and release date.
+- **Favorites:** Save and manage a local list of your favorite movies.
 
 ---
 
-## 📋 Requisitos
+## 📋 Requirements
 
-- Flutter SDK 3.8.0 o superior
-- Dart 3.0 o superior
+- Flutter SDK 3.8.0 or higher
+- Dart 3.0 or higher
 
 ---
 
-## 🛠️ Configuración y Setup
+## 🛠️ Configuration and Setup
 
-Para configurar el proyecto en tu entorno local, sigue estos pasos:
+To set up the project in your local environment, follow these steps:
 
-1.  **Clona el repositorio:**
+1.  **Clone the repository:**
 
     ```bash
-    git clone [https://github.com/angelbl11/movie-app](https://github.com/angelbl11/movie-app)
+    git clone https://github.com/angelbl11/movie-app
     cd movie-app
     ```
 
-2.  **Configura las variables de entorno:**
-    Esta aplicación utiliza `--dart-define` para manejar las claves de API y las URLs base. Para ejecutar la app, debes proporcionar estas variables.
+2.  **Set up environment variables:**
+    This application uses `--dart-define` to handle API keys and base URLs. To run the app, you must provide these variables.
 
-    - **API_URL**: La URL base del endpoint de la API.
-    - **API_KEY**: Tu token de autorización (Bearer Token) para la API.
+    - **API_URL**: The base URL for the API endpoint.
+    - **API_KEY**: Your authorization token (Bearer Token) for the API.
 
-3.  **Instala las dependencias:**
+3.  **Install dependencies:**
 
     ```bash
     flutter pub get
     ```
 
-4.  **Ejecuta el generador de código:**
-    El proyecto utiliza `build_runner` para generar el código necesario para `json_serializable`, `riverpod_generator` y `mockito`. Ejecuta el siguiente comando para generar los archivos `.g.dart` y `.mocks.dart`.
+4.  **Run the code generator:**
+    The project uses `build_runner` to generate the necessary code for `json_serializable`, `riverpod_generator`, and `mockito`. Run the following command to generate the `.g.dart` and `.mocks.dart` files.
+
     ```bash
     flutter pub run build_runner build --delete-conflicting-outputs
     ```
 
 ---
 
-## ▶️ Ejecutar la App
+## ▶️ Running the App
 
-Ejecuta la aplicación pasando las variables de entorno que configuraste en el paso 2.
+Run the application by passing the environment variables you configured in step 2.
 
 ```bash
-flutter run --dart-define=API_URL="[https://api.themoviedb.org/3/](https://api.themoviedb.org/3/)" --dart-define=API_KEY="TU_BEARER_TOKEN_AQUI"
+flutter run --dart-define=API_URL="https://api.themoviedb.org/3/" --dart-define=API_KEY="YOUR_BEARER_TOKEN_HERE"
 ```
 
-O bien, usando las environments del repositorio y el `makefile` aquí incluido, ejecutando:
+Alternatively, using the environments from the repository and the included `makefile`, run:
 
 ```bash
 make run
@@ -67,54 +68,54 @@ make run
 
 ---
 
-## 🏛️ Arquitectura y Decisiones Técnicas
+## 🏛️ Architecture and Technical Decisions
 
-El proyecto sigue una arquitectura por capas para separar responsabilidades y facilitar el mantenimiento y la escalabilidad.
+The project follows a layered architecture to separate responsibilities and facilitate maintenance and scalability.
 
-### Estructura de Carpetas
+### Folder Structure
 
-La estructura del proyecto está organizada por funcionalidad y tipo de capa:
+The project structure is organized by feature and layer type:
 
 ```
 lib/
-├── core/             # Lógica compartida (tema, widgets, constantes)
-├── data/             # Modelos de datos (Movie, MovieDetail, etc.) y lógica de serialización
-├── presentation/     # Capa de UI, organizada por pantalla (home, details, favorites)
+├── core/             # Shared logic (theme, widgets, constants)
+├── data/             # Data models (Movie, MovieDetail, etc.) and serialization logic
+├── presentation/     # UI Layer, organized by screen (home, details, favorites)
 │   ├── home/
 │   └── ...
-├── providers/            # Todos los providers de Riverpod (Shared preferences para las peliculas favoritas)
-└── repositories/         # Lógica de acceso a datos (API)
+├── providers/        # All Riverpod providers (SharedPreferences for favorite movies)
+└── repositories/     # Data access logic (API)
 test/
-├── unit/             # Pruebas unitarias para la lógica de servicios/providers
-└── widget/           # Pruebas de widgets para los componentes de la UI
+├── unit/             # Unit tests for service/provider logic
+└── widget/           # Widget tests for UI components
 ```
 
-### Componentes Clave
+### Key Components
 
-- **Gestión de Estado:** **Riverpod** se utiliza como la solución principal para la inyección de dependencias y la gestión de estado. Se favorece el uso de `AsyncNotifier` para manejar los estados asíncronos (loading, data, error) de las llamadas a la API.
+- **State Management:** **Riverpod** is used as the primary solution for dependency injection and state management. The `AsyncNotifier` pattern is favored for handling asynchronous states (loading, data, error) from API calls.
 
-- **Networking:** **Dio** es el cliente HTTP utilizado para todas las comunicacione con la API externa. La lógica de las llamadas se encapsula en funciones dentro de la capa de `repositories`.
+- **Networking:** **Dio** is the HTTP client used for all communication with the external API. The logic for these calls is encapsulated in functions within the `repositories` layer.
 
-- **Modelado de Datos:** **`json_serializable`** se usa para automatizar la conversión de datos JSON desde la API a objetos Dart fuertemente tipados, reduciendo el código manual y los errores.
+- **Data Modeling:** **`json_serializable`** is used to automate the conversion of JSON data from the API into strongly-typed Dart objects, reducing boilerplate and potential errors.
 
-- **Pruebas (Testing):** El proyecto incluye tanto pruebas unitarias como de widgets. **Mockito** se utiliza para crear mocks de las dependencias (como el cliente `Dio`) y así poder probar la lógica de negocio de forma aislada.
+- **Testing:** The project includes both unit and widget tests. **Mockito** is used to create mocks for dependencies (like the `Dio` client) to test business logic in isolation.
 
 ---
 
 ## 🧪 Testing
 
-### Ejecutar todos los tests
+### Run all tests
 
 ```bash
 flutter test
 ```
 
-### Tests por categoría
+### Tests by category
 
 ```bash
-# Pruebas Unitarias y de Servicios (API, Lógica)
+# Unit and Service Tests (API, Logic)
 flutter test test/unit/
 
-# Pruebas de Widgets (UI)
+# Widget Tests (UI)
 flutter test test/widget/
 ```
