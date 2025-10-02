@@ -59,6 +59,12 @@ Ejecuta la aplicación pasando las variables de entorno que configuraste en el p
 flutter run --dart-define=API_URL="[https://api.themoviedb.org/3/](https://api.themoviedb.org/3/)" --dart-define=API_KEY="TU_BEARER_TOKEN_AQUI"
 ```
 
+O bien, usando las environments del repositorio y el `makefile` aquí incluido, ejecutando:
+
+```bash
+make run
+```
+
 ---
 
 ## 🏛️ Arquitectura y Decisiones Técnicas
