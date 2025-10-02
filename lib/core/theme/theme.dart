@@ -44,10 +44,10 @@ class AppTheme {
     stops: [0.0, 0.5, 1.0],
   );
 
-  static const surfaceGradient = LinearGradient(
-    begin: Alignment.topCenter,
-    end: Alignment.bottomCenter,
-    colors: [Color(0xFF21262D), Color(0xFF30363D)],
+  static final surfaceGradient = LinearGradient(
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    colors: [const Color(0xFF1F1F1F), const Color(0xFF2C2C2C)],
   );
 
   static const accentGradient = LinearGradient(
@@ -137,7 +137,7 @@ class AppTheme {
 
   static Widget surfaceGradientBackground({required Widget child}) {
     return Container(
-      decoration: const BoxDecoration(gradient: surfaceGradient),
+      decoration: BoxDecoration(gradient: surfaceGradient),
       child: child,
     );
   }
@@ -172,10 +172,10 @@ class AppTheme {
     stops: [0.0, 0.5, 1.0],
   );
 
-  static const lightSurfaceGradient = LinearGradient(
-    begin: Alignment.topCenter,
-    end: Alignment.bottomCenter,
-    colors: [Color(0xFFFFFFFF), Color(0xFFF8F9FA)],
+  static final lightSurfaceGradient = LinearGradient(
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    colors: [Colors.white, Colors.grey[100]!],
   );
 
   // Typography para tema claro
@@ -259,7 +259,7 @@ class AppTheme {
 
   static Widget lightSurfaceGradientBackground({required Widget child}) {
     return Container(
-      decoration: const BoxDecoration(gradient: lightSurfaceGradient),
+      decoration: BoxDecoration(gradient: lightSurfaceGradient),
       child: child,
     );
   }

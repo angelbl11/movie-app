@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:movie_app/data/movie.dart';
 import 'package:movie_app/core/theme/theme.dart';
 import 'package:movie_app/presentation/details/details_screen.dart';
@@ -32,7 +33,9 @@ class SearchResultsList extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.1),
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Colors.black.withOpacity(0.1)
+                      : Colors.grey.withOpacity(0.2),
                   spreadRadius: 1,
                   blurRadius: 8,
                   offset: const Offset(0, 2),
@@ -42,7 +45,11 @@ class SearchResultsList extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: Container(
-                decoration: BoxDecoration(gradient: AppTheme.surfaceGradient),
+                decoration: BoxDecoration(
+                  gradient: Theme.of(context).brightness == Brightness.dark
+                      ? AppTheme.surfaceGradient
+                      : AppTheme.lightSurfaceGradient,
+                ),
                 child: Row(
                   children: [
                     SizedBox(
@@ -87,9 +94,7 @@ class SearchResultsList extends StatelessWidget {
                           children: [
                             Text(
                               movie.title,
-                              style: AppTheme.subtitle1.copyWith(
-                                fontWeight: FontWeight.bold,
-                              ),
+                              style: Theme.of(context).textTheme.headlineSmall,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                             ),
@@ -113,7 +118,9 @@ class SearchResultsList extends StatelessWidget {
                                 const SizedBox(width: 12),
                                 Text(
                                   movie.releaseDate != null
-                                      ? movie.releaseDate!.split('-')[0]
+                                      ? DateFormat('MMM dd, yyyy').format(
+                                          DateTime.parse(movie.releaseDate!),
+                                        )
                                       : 'N/A',
                                   style: AppTheme.caption,
                                 ),
@@ -126,7 +133,11 @@ class SearchResultsList extends StatelessWidget {
                               Text(
                                 movie.overview,
                                 style: AppTheme.caption.copyWith(
-                                  color: Colors.white70,
+                                  color:
+                                      Theme.of(context).brightness ==
+                                          Brightness.dark
+                                      ? Colors.white70
+                                      : Colors.black87,
                                 ),
                                 maxLines: 3,
                                 overflow: TextOverflow.ellipsis,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 import 'package:movie_app/core/widgets/theme_toggle_button.dart';
 import 'package:movie_app/providers/movie_details_controller.dart';
 import 'package:movie_app/core/theme/theme.dart';
@@ -16,10 +17,13 @@ class MovieDetailsScreen extends ConsumerWidget {
     const imageUrl = String.fromEnvironment('IMAGE_URL');
 
     return Scaffold(
-      backgroundColor: Colors.transparent,
       body: movieDetails.when(
         data: (movie) => Container(
-          decoration: BoxDecoration(gradient: AppTheme.surfaceGradient),
+          decoration: BoxDecoration(
+            gradient: Theme.of(context).brightness == Brightness.dark
+                ? AppTheme.surfaceGradient
+                : AppTheme.lightSurfaceGradient,
+          ),
           child: CustomScrollView(
             slivers: [
               SliverAppBar(
@@ -76,7 +80,9 @@ class MovieDetailsScreen extends ConsumerWidget {
                             end: Alignment.bottomCenter,
                             colors: [
                               Colors.transparent,
-                              Colors.black.withOpacity(0.7),
+                              Theme.of(context).brightness == Brightness.dark
+                                  ? Colors.black.withOpacity(0.7)
+                                  : Colors.white.withOpacity(0.7),
                             ],
                           ),
                         ),
@@ -99,7 +105,6 @@ class MovieDetailsScreen extends ConsumerWidget {
                               vertical: 4,
                             ),
                             decoration: BoxDecoration(
-                              color: AppTheme.darkAccent.color,
                               borderRadius: BorderRadius.circular(8),
                             ),
                             child: Row(
@@ -113,16 +118,28 @@ class MovieDetailsScreen extends ConsumerWidget {
                                 const SizedBox(width: 4),
                                 Text(
                                   movie.voteAverage.toStringAsFixed(1),
-                                  style: AppTheme.caption.copyWith(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600,
-                                  ),
+                                  style: Theme.of(context).textTheme.bodySmall
+                                      ?.copyWith(fontWeight: FontWeight.bold),
                                 ),
                               ],
                             ),
                           ),
                           const SizedBox(width: 16),
-                          Text('Release', style: AppTheme.caption),
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+
+                            children: [
+                              Text('Release', style: AppTheme.caption),
+                              const SizedBox(width: 4),
+                              Text(
+                                DateFormat(
+                                  'MMM dd, yyyy',
+                                ).format(movie.releaseDate),
+                                style: Theme.of(context).textTheme.bodySmall
+                                    ?.copyWith(fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
                         ],
                       ),
                       const SizedBox(height: 16),
@@ -158,15 +175,15 @@ class MovieDetailsScreen extends ConsumerWidget {
                       const SizedBox(height: 24),
                       Text(
                         'Synopsis',
-                        style: AppTheme.subtitle1.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style: Theme.of(context).textTheme.headlineMedium,
                       ),
                       const SizedBox(height: 8),
                       Text(
                         movie.overview,
                         style: AppTheme.caption.copyWith(
-                          color: Colors.white70,
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Colors.white70
+                              : Colors.black87,
                           height: 1.5,
                         ),
                       ),
