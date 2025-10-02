@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:movie_app/presentation/home/home_screen.dart';
 import 'package:movie_app/core/theme/theme.dart';
+import 'package:movie_app/presentation/main/main_home_screen.dart';
 import 'package:movie_app/providers/theme_controller.dart';
 import 'package:themed/themed.dart';
 
@@ -21,7 +21,7 @@ class MainApp extends ConsumerWidget {
       theme: currentTheme,
       themeMode: themeMode,
       home: _buildBackground(
-        child: const Scaffold(body: HomeScreen()),
+        child: const MainHomeScreen(),
         themeMode: themeMode,
       ),
       debugShowCheckedModeBanner: false,
