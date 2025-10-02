@@ -27,7 +27,7 @@ Para configurar el proyecto en tu entorno local, sigue estos pasos:
 1.  **Clona el repositorio:**
 
     ```bash
-    git clone [https://tu-repositorio.git](https://tu-repositorio.git)
+    git clone [https://github.com/angelbl11/movie-app](https://github.com/angelbl11/movie-app)
     cd movie-app
     ```
 
@@ -58,8 +58,6 @@ Ejecuta la aplicación pasando las variables de entorno que configuraste en el p
 ```bash
 flutter run --dart-define=API_URL="[https://api.themoviedb.org/3/](https://api.themoviedb.org/3/)" --dart-define=API_KEY="TU_BEARER_TOKEN_AQUI"
 ```
-
-````
 
 ---
 
@@ -118,4 +116,7 @@ flutter test test/widget/
 ```
 
 ```
-````
+
+```
+
+```
