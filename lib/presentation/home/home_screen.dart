@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_app/core/widgets/custom_error.dart';
 import 'package:movie_app/core/widgets/custom_loading.dart';
-import 'package:movie_app/presentation/widgets/popular_movies.dart';
+import 'package:movie_app/presentation/home/widgets/popular_movies.dart';
 import 'package:movie_app/providers/movie_controller.dart';
 
 class HomeScreen extends ConsumerWidget {

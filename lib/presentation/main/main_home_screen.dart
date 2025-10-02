@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/widgets/custom_appbar.dart';
+import 'package:movie_app/presentation/favorites/favorites_screen.dart';
 import 'package:movie_app/presentation/home/home_screen.dart';
 import 'package:movie_app/presentation/search/search_screen.dart';
 
@@ -16,7 +17,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
   static const List<Widget> _screens = [
     HomeScreen(),
     SearchScreen(),
-    Center(child: Text('Favorites')),
+    FavoritesScreen(),
   ];
 
   void _onItemTapped(int index) {
