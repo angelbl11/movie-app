@@ -87,7 +87,7 @@ test/
 
 - **Gestión de Estado:** **Riverpod** se utiliza como la solución principal para la inyección de dependencias y la gestión de estado. Se favorece el uso de `AsyncNotifier` para manejar los estados asíncronos (loading, data, error) de las llamadas a la API.
 
-- **Networking:** **Dio** es el cliente HTTP utilizado para todas las comunicacione con la API externa. La lógica de las llamadas se encapsula en funciones dentro de la capa de `services` o `repositories`.
+- **Networking:** **Dio** es el cliente HTTP utilizado para todas las comunicacione con la API externa. La lógica de las llamadas se encapsula en funciones dentro de la capa de `repositories`.
 
 - **Modelado de Datos:** **`json_serializable`** se usa para automatizar la conversión de datos JSON desde la API a objetos Dart fuertemente tipados, reduciendo el código manual y los errores.
 
