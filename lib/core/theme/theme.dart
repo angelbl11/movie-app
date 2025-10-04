@@ -3,40 +3,25 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:themed/themed.dart';
 
 class AppTheme {
-  // Dark Theme Colors (Principal para app de películas)
-  static const darkPrimary = ColorRef(Color(0xFF2196F3)); // Azul vibrante
-  static const darkSecondary = ColorRef(Color(0xFF1E88E5)); // Azul más oscuro
-  static const darkAccent = ColorRef(
-    Color(0xFF42A5F5),
-  ); // Azul claro para acentos
+  static const darkPrimary = ColorRef(Color(0xFF2196F3));
+  static const darkSecondary = ColorRef(Color(0xFF1E88E5));
+  static const darkAccent = ColorRef(Color(0xFF42A5F5));
 
-  // Colores de fondo con degradados
-  static const darkBackgroundStart = ColorRef(
-    Color(0xFF0D1117),
-  ); // Negro azulado muy oscuro
-  static const darkBackgroundEnd = ColorRef(
-    Color(0xFF161B22),
-  ); // Negro azulado oscuro
-  static const darkSurface = ColorRef(
-    Color(0xFF21262D),
-  ); // Gris oscuro para superficies
-  static const darkSurfaceVariant = ColorRef(
-    Color(0xFF30363D),
-  ); // Gris medio oscuro
+  static const darkBackgroundStart = ColorRef(Color(0xFF0D1117));
+  static const darkBackgroundEnd = ColorRef(Color(0xFF161B22));
+  static const darkSurface = ColorRef(Color(0xFF21262D));
+  static const darkSurfaceVariant = ColorRef(Color(0xFF30363D));
 
-  // Colores de texto
-  static const darkTextPrimary = ColorRef(Color(0xFFFFFFFF)); // Blanco puro
-  static const darkTextSecondary = ColorRef(Color(0xFFB3B3B3)); // Gris claro
-  static const darkTextTertiary = ColorRef(Color(0xFF8B949E)); // Gris medio
+  // Text colors
+  static const darkTextPrimary = ColorRef(Color(0xFFFFFFFF));
+  static const darkTextSecondary = ColorRef(Color(0xFFB3B3B3));
+  static const darkTextTertiary = ColorRef(Color(0xFF8B949E));
 
-  // Colores de estado
-  static const darkSuccess = ColorRef(Color(0xFF28A745)); // Verde para éxito
-  static const darkWarning = ColorRef(
-    Color(0xFFFFC107),
-  ); // Amarillo para advertencia
-  static const darkError = ColorRef(Color(0xFFDC3545)); // Rojo para error
+  // Status colors
+  static const darkSuccess = ColorRef(Color(0xFF28A745));
+  static const darkWarning = ColorRef(Color(0xFFFFC107));
+  static const darkError = ColorRef(Color(0xFFDC3545));
 
-  // Degradados predefinidos
   static const primaryGradient = LinearGradient(
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
@@ -56,7 +41,7 @@ class AppTheme {
     colors: [Color(0xFF2196F3), Color(0xFF1E88E5)],
   );
 
-  // Typography con Google Fonts
+  // Typography for dark theme
   static TextStyle get heading1 => GoogleFonts.inter(
     fontSize: 32,
     fontWeight: FontWeight.w700,
@@ -127,7 +112,7 @@ class AppTheme {
     color: darkTextTertiary.color,
   );
 
-  // Widgets de fondo degradado
+  // Widgets for gradient backgrounds
   static Widget gradientBackground({required Widget child}) {
     return Container(
       decoration: const BoxDecoration(gradient: primaryGradient),
@@ -143,28 +128,20 @@ class AppTheme {
   }
 
   // Light Theme Colors
-  static const lightPrimary = ColorRef(
-    Color(0xFF1976D2),
-  ); // Azul más oscuro para contraste
-  static const lightSecondary = ColorRef(Color(0xFF1565C0)); // Azul medio
-  static const lightAccent = ColorRef(Color(0xFF2196F3)); // Azul vibrante
+  static const lightPrimary = ColorRef(Color(0xFF1976D2));
+  static const lightSecondary = ColorRef(Color(0xFF1565C0));
+  static const lightAccent = ColorRef(Color(0xFF2196F3));
 
-  // Colores de fondo para tema claro
-  static const lightBackgroundStart = ColorRef(
-    Color(0xFFF5F5F5),
-  ); // Gris muy claro
-  static const lightBackgroundEnd = ColorRef(Color(0xFFE0E0E0)); // Gris claro
-  static const lightSurface = ColorRef(Color(0xFFFFFFFF)); // Blanco puro
-  static const lightSurfaceVariant = ColorRef(
-    Color(0xFFF8F9FA),
-  ); // Blanco con tinte gris
+  static const lightBackgroundStart = ColorRef(Color(0xFFF5F5F5));
+  static const lightBackgroundEnd = ColorRef(Color(0xFFE0E0E0));
+  static const lightSurface = ColorRef(Color(0xFFFFFFFF));
+  static const lightSurfaceVariant = ColorRef(Color(0xFFF8F9FA));
 
-  // Colores de texto para tema claro
-  static const lightTextPrimary = ColorRef(Color(0xFF212529)); // Negro suave
-  static const lightTextSecondary = ColorRef(Color(0xFF495057)); // Gris oscuro
-  static const lightTextTertiary = ColorRef(Color(0xFF6C757D)); // Gris medio
+  // Text colors for light theme
+  static const lightTextPrimary = ColorRef(Color(0xFF212529));
+  static const lightTextSecondary = ColorRef(Color(0xFF495057));
+  static const lightTextTertiary = ColorRef(Color(0xFF6C757D));
 
-  // Degradados para tema claro
   static const lightPrimaryGradient = LinearGradient(
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
@@ -178,7 +155,7 @@ class AppTheme {
     colors: [Colors.white, Colors.grey[100]!],
   );
 
-  // Typography para tema claro
+  // Typography for light theme
   static TextStyle get lightHeading1 => GoogleFonts.inter(
     fontSize: 32,
     fontWeight: FontWeight.w700,
@@ -249,7 +226,6 @@ class AppTheme {
     color: lightTextTertiary.color,
   );
 
-  // Widgets de fondo degradado para tema claro
   static Widget lightGradientBackground({required Widget child}) {
     return Container(
       decoration: const BoxDecoration(gradient: lightPrimaryGradient),
@@ -264,7 +240,7 @@ class AppTheme {
     );
   }
 
-  // Tema de Material Design - Dark Theme
+  // Dark Theme of Material Design
   static ThemeData get darkTheme {
     return ThemeData(
       useMaterial3: true,
@@ -332,7 +308,7 @@ class AppTheme {
     );
   }
 
-  // Tema de Material Design - Light Theme
+  // Light Theme of Material Design
   static ThemeData get lightTheme {
     return ThemeData(
       useMaterial3: true,

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_app/core/theme/theme.dart';
@@ -6,7 +7,22 @@ import 'package:movie_app/providers/theme_controller.dart';
 import 'package:themed/themed.dart';
 
 void main() {
-  runApp(ProviderScope(child: Themed(child: const MainApp())));
+  WidgetsFlutterBinding.ensureInitialized();
+
+  runZonedGuarded<Future<void>>(
+    () async {
+      runApp(ProviderScope(child: Themed(child: const MainApp())));
+    },
+    (error, stackTrace) {
+      debugPrint('Caught error in runZonedGuarded: $error');
+      debugPrint(stackTrace.toString());
+    },
+  );
+
+  FlutterError.onError = (FlutterErrorDetails details) {
+    debugPrint('Caught error in FlutterError.onError: ${details.exception}');
+    debugPrint(details.stack.toString());
+  };
 }
 
 class MainApp extends ConsumerWidget {
@@ -38,7 +54,7 @@ class MainApp extends ConsumerWidget {
       case ThemeMode.dark:
         return AppTheme.gradientBackground(child: child);
       case ThemeMode.system:
-        return AppTheme.gradientBackground(child: child); // Fallback to dark
+        return AppTheme.gradientBackground(child: child);
     }
   }
 }

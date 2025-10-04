@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_app/data/movie_detail.dart';
 import 'package:movie_app/data/movie_local.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';

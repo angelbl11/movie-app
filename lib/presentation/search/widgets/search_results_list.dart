@@ -34,8 +34,8 @@ class SearchResultsList extends StatelessWidget {
               boxShadow: [
                 BoxShadow(
                   color: Theme.of(context).brightness == Brightness.dark
-                      ? Colors.black.withOpacity(0.1)
-                      : Colors.grey.withOpacity(0.2),
+                      ? Colors.black.withValues(alpha: 0.1)
+                      : Colors.grey.withValues(alpha: 0.2),
                   spreadRadius: 1,
                   blurRadius: 8,
                   offset: const Offset(0, 2),

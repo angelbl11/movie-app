@@ -17,7 +17,7 @@ class ThemeController extends _$ThemeController {
 
   Future<void> _loadThemeMode() async {
     final prefs = await SharedPreferences.getInstance();
-    final isDarkMode = prefs.getBool(_themeKey) ?? true; // Default to dark
+    final isDarkMode = prefs.getBool(_themeKey) ?? true;
     state = isDarkMode ? ThemeMode.dark : ThemeMode.light;
   }
 

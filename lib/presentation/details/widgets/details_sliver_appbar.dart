@@ -62,7 +62,7 @@ class DetailsSliverAppBar extends ConsumerWidget {
             shadows: [
               Shadow(
                 blurRadius: 10.0,
-                color: Colors.black.withOpacity(0.5),
+                color: Colors.black.withValues(alpha: 0.5),
                 offset: const Offset(2.0, 2.0),
               ),
             ],
@@ -104,8 +104,8 @@ class DetailsSliverAppBar extends ConsumerWidget {
                   colors: [
                     Colors.transparent,
                     Theme.of(context).brightness == Brightness.dark
-                        ? Colors.black.withOpacity(0.7)
-                        : Colors.white.withOpacity(0.7),
+                        ? Colors.black.withValues(alpha: 0.7)
+                        : Colors.white.withValues(alpha: 0.7),
                   ],
                 ),
               ),

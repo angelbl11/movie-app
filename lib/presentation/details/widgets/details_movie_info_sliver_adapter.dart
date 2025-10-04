@@ -72,7 +72,7 @@ class DetailsMovieInfoSliverAdapter extends StatelessWidget {
                         vertical: 6,
                       ),
                       decoration: BoxDecoration(
-                        color: AppTheme.darkAccent.color.withOpacity(0.1),
+                        color: AppTheme.darkAccent.color.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(20),
                         border: Border.all(color: AppTheme.darkAccent.color),
                       ),

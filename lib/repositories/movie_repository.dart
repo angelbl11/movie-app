@@ -8,9 +8,8 @@ const apiKey = String.fromEnvironment('API_KEY');
 Future<MovieModel> getMovies(Dio dio) async {
   try {
     final response = await dio.get(
-      '${apiUrl}movie/popular',
+      'movie/popular',
       queryParameters: {'region': 'MX'},
-      options: Options(headers: {'Authorization': 'Bearer $apiKey'}),
     );
     if (response.statusCode == 200) {
       return MovieModel.fromJson(response.data);
@@ -27,9 +26,8 @@ Future<MovieModel> getMovies(Dio dio) async {
 Future<MovieModel> searchMovies(Dio dio, String query) async {
   try {
     final response = await dio.get(
-      '${apiUrl}search/movie',
+      'search/movie',
       queryParameters: {'query': query, 'region': 'MX'},
-      options: Options(headers: {'Authorization': 'Bearer $apiKey'}),
     );
     if (response.statusCode == 200) {
       return MovieModel.fromJson(response.data);
@@ -45,10 +43,7 @@ Future<MovieModel> searchMovies(Dio dio, String query) async {
 
 Future<MovieDetailModel> getMovieDetails(Dio dio, int movieId) async {
   try {
-    final response = await dio.get(
-      '${apiUrl}movie/$movieId',
-      options: Options(headers: {'Authorization': 'Bearer $apiKey'}),
-    );
+    final response = await dio.get('movie/$movieId');
     if (response.statusCode == 200) {
       return MovieDetailModel.fromJson(response.data);
     } else {
